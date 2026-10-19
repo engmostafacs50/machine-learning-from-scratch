@@ -1,8 +1,9 @@
 import numpy as np
-
+# remaining apply feuture scaling 
+# remaining apply choosing suitable learning rate 
 class LinearRegression:
 
-    def __init__(self, learning_rate=0.01, iterations=1200):
+    def __init__(self,  learning_rate=0.00001, iterations=1000):
         self.learning_rate = learning_rate
         self.iterations = iterations
         self.w = None
@@ -14,6 +15,8 @@ class LinearRegression:
         self.w = np.zeros(n)
         self.b = 0
 
+        previous_cost = float("inf")
+        
         for i in range(self.iterations):
 
             error = self.compute_error(X, y)
@@ -23,11 +26,14 @@ class LinearRegression:
 
             self.w = self.w - self.learning_rate * dj_dw
             self.b = self.b - self.learning_rate * dj_db
-            if i == 1000 :
-                print(f"dj_dw = {dj_dw}")
-            if i % 100 == 0 :
-                print(f"Iteration number {i} and cost function at this iteration = {self.compute_cost(X , y)}")
-
+            
+            current_cost = self.compute_cost(X , y)
+            
+            if(abs(current_cost - previous_cost) <= 0.0001):
+                print(f"Converged at iteration {i + 1}")
+                break 
+            previous_cost = current_cost 
+            
     def predict(self, X):
         return X @ self.w + self.b
 
