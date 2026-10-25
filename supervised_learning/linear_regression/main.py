@@ -74,7 +74,7 @@ X_test_norm = (X_test - X_mu) / X_sigma
 
 model = LinearRegression(
      learning_rate=0.001,
-    iterations=10000
+    iterations=20000
 )
 
 

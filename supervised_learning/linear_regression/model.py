@@ -3,7 +3,7 @@ import numpy as np
 # remaining apply choosing suitable learning rate 
 class LinearRegression:
 
-    def __init__(self,  learning_rate=0.001, iterations=10000):
+    def __init__(self,  learning_rate=0.01, iterations=20000):
         self.learning_rate = learning_rate
         self.iterations = iterations
         self.w = None
@@ -33,11 +33,12 @@ class LinearRegression:
 
             if previous_cost is not None:
                 if abs(current_cost - previous_cost) <= 0.0001:
-                    # print(f"Converged at iteration {i + 1}")
+                    print(f"Converged at iteration {i + 1}")
                     # print(f"Final Cost: {current_cost}")
                     break
-
-        previous_cost = current_cost 
+            previous_cost = current_cost
+        print(f"Final Training Cost: {self.compute_cost(X, y)}")
+        
             
     def predict(self, X):
         return X @ self.w + self.b
