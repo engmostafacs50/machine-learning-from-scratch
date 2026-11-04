@@ -58,7 +58,7 @@ class LogisticRegression:
             previous_cost = current_cost
 
     def fit(self, X, y):
-        m , n = X.shape() 
+        m , n = X.shape
         self.w = np.zeros((n , ))
         self.b = 0.0
         self.gradient_descent(X , y)
