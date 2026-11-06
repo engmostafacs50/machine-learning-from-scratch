@@ -114,7 +114,7 @@ The model is implemented using NumPy and includes the following methods:
 ## Project Structure
 
 ```text
-logistic_regression/
+classification/
 │
 ├── README.md
 ├── model.py
